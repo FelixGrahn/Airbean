@@ -4,6 +4,7 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <!-- felix test 1 -->
     <!-- fredrik test 1 -->
+    <!-- sinan test 1 -->
   </div>
 </template>
 
