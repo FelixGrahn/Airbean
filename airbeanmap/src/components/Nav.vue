@@ -30,7 +30,10 @@ export default {
     display:flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    background-color:red;
+    background-image:url('../assets/header-leaf.png');
+    background-position: center top;
+    background-size:auto 100%;
+    padding:5%;
 }
 
 .navbar > div {
