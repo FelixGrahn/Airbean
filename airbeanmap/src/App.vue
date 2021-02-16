@@ -6,8 +6,9 @@
     <!-- fredrik test 1 -->
     <!-- sinan test 3 -->
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/About">About</router-link>
+      <router-link to="/">Home</router-link> | 
+      <router-link to="/About">About</router-link> | 
+      <router-link to="/Landing">Landing</router-link>
     </div>
     <router-view />
   </div>
