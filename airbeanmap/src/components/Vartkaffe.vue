@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <h1>Vårt Kaffe</h1>
-    <p>
+    <span class="header">Vårt Kaffe</span>
+    <p class="bold">
       Pumpkin spice mug, barista cup, sit macchiato, kopi-luwak, doppio, grounds
       dripper, crema, strong whipped, variety extra iced id lungo half and half
       mazagran. Pumpkin spice.
@@ -46,8 +46,19 @@ export default {};
   align-items: center;
   background-color: #f3e4e1;
 }
+.header {
+ font-size: 35px;
+ margin-right: 250px;
+}
 p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: justify;
   width: 25em;
+}
+.bold {
+  font-weight: 700;
+}
+b {
+ font-size: 20px;
 }
 </style>

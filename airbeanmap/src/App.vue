@@ -6,25 +6,25 @@
     <!-- fredrik test 1 -->
     <!-- sinan test 3 -->
 
-    <!--
+    
     <div id="nav">
       <router-link to="/">Home</router-link> | 
       <router-link to="/About">About</router-link> | 
       <router-link to="/Landing">Landing</router-link>
     </div>
-    -->
-    <Nav />
+   
+    <!-- <Nav /> -->
     <router-view />
   </div>
 </template>
 
 <script>
-import Nav from "./components/Nav.vue";
+// import Nav from "./components/Nav.vue";
 
 export default {
   name: "App",
   components: {
-    Nav,
+    // Nav,
   },
 };
 </script>
