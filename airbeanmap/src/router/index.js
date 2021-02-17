@@ -3,8 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/Test.vue";
 import Landing from "../views/Landing.vue";
-import Breadview from "../views/Breadview.vue";
-
+import Meny from "../views/Meny.vue";
 
 
 
@@ -27,9 +26,9 @@ const routes = [
     component: Landing
   },
   {
-    path: "/Breadview",
-    name: "Breadview",
-    component: Breadview
+    path: "/Meny",
+    name: "Meny",
+    component: Meny
   }
 ];
 
