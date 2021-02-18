@@ -11,7 +11,8 @@
       <router-link to="/">Home</router-link> | 
       <router-link to="/About">About</router-link> | 
       <router-link to="/Landing">Landing</router-link> | 
-      <router-link to="/Meny">Meny</router-link>
+      <router-link to="/Meny">Meny</router-link> | 
+      <router-link to="/Status">Status</router-link>
     </div>
    
     <Nav />
