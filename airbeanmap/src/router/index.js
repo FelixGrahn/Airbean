@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import About from "../views/Test.vue";
 import Landing from "../views/Landing.vue";
 import Meny from "../views/Meny.vue";
+import Vartkaffe from "../views/Vartkaffe.vue";
 
 
 
@@ -29,7 +30,12 @@ const routes = [
     path: "/Meny",
     name: "Meny",
     component: Meny
-  }
+  },
+  {
+    path: "/Vartkaffe",
+    name: "Vartkaffe",
+    component: Vartkaffe
+  },
 ];
 
 const router = new VueRouter({

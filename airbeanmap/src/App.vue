@@ -30,6 +30,11 @@ export default {
     Nav,
     HamburgerMenu,
   },
+  methods: {
+    hideShowMenu: function() {
+      this.displayNavMenu = !this.displayNavMenu;
+    }
+  }
 };
 </script>
 

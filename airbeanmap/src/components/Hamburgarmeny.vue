@@ -11,26 +11,22 @@
 </template>
 
 <script>
-//import router from "./router";
 
 export default {
-    components: {
-        //router,
-    },
     data: function() {
         return {
             menuOps: [
                 {
                     title: "Meny",
-                    myUrl: "/home",
+                    myUrl: "Meny",
                 },
                 {
                     title: "Vårt kaffe",
-                    myUrl: "/home 2",
+                    myUrl: "Vartkaffe",
                 },
                 {
                     title: "Min profil",
-                    myUrl: "/home 3",
+                    myUrl: "About",
                 },
                 {
                     title: "Orderstatus",
@@ -41,8 +37,8 @@ export default {
     },
     methods: {
         goto: function(param) {
-            alert(param);
-            //router.push('about');
+            this.$root.hideShowMenu();
+            this.$root.$router.push(param);
         }
     }
     

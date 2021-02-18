@@ -65,7 +65,7 @@ export default {
 <style>
 .Breadview {
   background-color: #f3e4e1;
-  width: 110%;
+  width: 100%;
   
     /* background-color: #0e927d;
     height: 1080px;

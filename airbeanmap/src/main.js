@@ -16,5 +16,10 @@ new Vue({
       displayNavMenu: false,
     }
   },
+  methods: {
+    hideShowMenu() {
+      this.displayNavMenu = !this.displayNavMenu;
+    }
+  },
   render: h => h(App)
 }).$mount("#app");

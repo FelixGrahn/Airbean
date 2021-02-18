@@ -1,7 +1,7 @@
 <template>
 
 <nav class="navbar">
-    <div class="button menu" v-on:click="clickBurger">
+    <div class="button menu" v-on:click="this.$root.hideShowMenu">
         <div></div>
         <div></div>
         <div></div>
@@ -15,9 +15,12 @@
 export default {
 
     methods: {
+        /*
         clickBurger() {
-            this.$root.$data.displayNavMenu = !this.$root.$data.displayNavMenu;
+            this.$root.hideShowMenu();
+            //this.$root.$data.displayNavMenu = !this.$root.$data.displayNavMenu;
         },
+        */
         clickOrder() {
             alert('order');
         }
