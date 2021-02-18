@@ -1,12 +1,12 @@
 <template>
 
 <nav class="navbar">
-    <div class="button_hamburger" v-on:click="clickBurger">
+    <div class="button menu" v-on:click="clickBurger">
         <div></div>
         <div></div>
         <div></div>
     </div>
-    <div class="button_order" v-on:click="clickOrder">right</div>
+    <div class="button bag" v-on:click="clickOrder"></div>
 </nav>
   
 </template>
@@ -16,7 +16,7 @@ export default {
 
     methods: {
         clickBurger() {
-            alert('hamburger');
+            this.$root.$data.displayNavMenu = !this.$root.$data.displayNavMenu;
         },
         clickOrder() {
             alert('order');
@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .navbar {
     width:100%;
@@ -34,34 +34,47 @@ export default {
     display:flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    background-image:url('../assets/header-leaf.png');
-    background-position: center top;
-    background-size:auto 100%;
     padding:5%;
+    box-sizing:border-box;
 }
 
-.button_hamburger > div {
+.menu > div {
   width: 35px;
   height: 5px;
   background-color: black;
   margin: 6px 0;
   margin-left:auto;
   margin-right:auto;
+  box-sizing:border-box;
 }
-.button_hamburger > div:nth-child(1) {
+.button > div:nth-child(1) {
     margin-top:35%;
 }
 
-.button_hamburger, .button_order {
+.button {
     width:90px;
     height:90px;
     border-radius:50%;
     display:block;
     background-color:#202020;
+    cursor: pointer;
+    box-sizing:border-box;
+    opacity: 0.8;
+}
+.button:hover {
+    border:4px solid red;
+    opacity: 1;
 }
 
-.button_hamburger {
+.menu {
     background-color:#EEE;
+}
+
+.bag {
+    background-image:url('../assets/bag.png');
+    background-position: center center;
+    background-size:16px 22px;
+    background-repeat:no-repeat;
 }
 
 </style>

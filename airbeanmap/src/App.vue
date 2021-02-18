@@ -14,18 +14,21 @@
       <router-link to="/Meny">Meny</router-link>
     </div>
    
-    <!-- <Nav /> -->
+    <Nav />
+    <HamburgerMenu v-if="this.$root.$data.displayNavMenu" />
     <router-view />
   </div>
 </template>
 
 <script>
-// import Nav from "./components/Nav.vue";
+import Nav from "./components/Nav.vue";
+import HamburgerMenu from "./components/Hamburgarmeny.vue";
 
 export default {
   name: "App",
   components: {
-    // Nav,
+    Nav,
+    HamburgerMenu,
   },
 };
 </script>
