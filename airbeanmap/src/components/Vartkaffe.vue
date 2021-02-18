@@ -56,7 +56,7 @@ p {
   width: 25em;
 }
 .bold {
-  font-weight: 700;
+  font-weight: 600;
 }
 b {
  font-size: 20px;
