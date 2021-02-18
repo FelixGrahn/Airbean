@@ -54,7 +54,7 @@ export default {
     align-content: center;
     justify-content: center;
     width:700px;
-    min-height:800px;
+    height:100%;
     background-color:rgba(0,0,0,0.9);
     margin-left:auto;
     margin-right:auto;
