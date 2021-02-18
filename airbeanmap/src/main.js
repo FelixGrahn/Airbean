@@ -8,7 +8,13 @@ Vue.config.productionTip = false
   render: h => h(App),
 }).$mount('#app') */
 
+
 new Vue({
   router,
+  data: function(){
+    return {
+      displayNavMenu: false,
+    }
+  },
   render: h => h(App)
 }).$mount("#app");
