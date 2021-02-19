@@ -11,12 +11,12 @@
       <router-link to="/">Home</router-link> | 
       <router-link to="/About">About</router-link> | 
       <router-link to="/Landing">Landing</router-link> | 
-      <router-link to="/Meny">Meny</router-link> | 
-      <router-link to="/Status">Status</router-link>
+      <router-link to="/Meny">Meny</router-link>
     </div>
    
     <Nav />
     <HamburgerMenu v-if="this.$root.$data.displayNavMenu" />
+    <Cart v-if="this.$root.$data.displayNavStatus" />
     <router-view />
   </div>
 </template>
@@ -24,18 +24,15 @@
 <script>
 import Nav from "./components/Nav.vue";
 import HamburgerMenu from "./components/Hamburgarmeny.vue";
+import Cart from "./components/Cart.vue";
 
 export default {
   name: "App",
   components: {
     Nav,
     HamburgerMenu,
+    Cart,
   },
-  methods: {
-    hideShowMenu: function() {
-      this.displayNavMenu = !this.displayNavMenu;
-    }
-  }
 };
 </script>
 

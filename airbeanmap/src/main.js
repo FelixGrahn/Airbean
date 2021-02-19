@@ -14,11 +14,20 @@ new Vue({
   data: function(){
     return {
       displayNavMenu: false,
+      displayNavStatus: false,
     }
   },
   methods: {
     hideShowMenu() {
       this.displayNavMenu = !this.displayNavMenu;
+      if (this.displayNavMenu) {this.displayNavStatus=false;}
+    },
+    hideShowStatus() {
+      this.displayNavStatus = !this.displayNavStatus;
+      if (this.displayNavStatus) {this.displayNavMenu=false;}
+    },
+    showStatus() {
+      this.displayNavStatus = true;
     }
   },
   render: h => h(App)

@@ -40,7 +40,8 @@ const routes = [
     path: "/Status",
     name: "Status",
     component: Status
-  }
+  },
+
 ];
 
 const router = new VueRouter({
