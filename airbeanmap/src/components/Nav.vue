@@ -6,26 +6,13 @@
         <div></div>
         <div></div>
     </div>
-    <div class="button bag" v-on:click="clickOrder"></div>
+    <div class="button bag" v-on:click="this.$root.hideShowStatus"></div>
 </nav>
   
 </template>
 
 <script>
 export default {
-
-    methods: {
-        /*
-        clickBurger() {
-            this.$root.hideShowMenu();
-            //this.$root.$data.displayNavMenu = !this.$root.$data.displayNavMenu;
-        },
-        */
-        clickOrder() {
-            alert('order');
-        }
-    }
-
 }
 </script>
 

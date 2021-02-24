@@ -30,7 +30,7 @@ export default {
                 },
                 {
                     title: "Orderstatus",
-                    myUrl: "/home 4",
+                    myUrl: "",
                 }
             ],
         }
@@ -38,7 +38,12 @@ export default {
     methods: {
         goto: function(param) {
             this.$root.hideShowMenu();
-            this.$root.$router.push(param);
+            if (param.length == 0) {
+                this.$root.showStatus();
+            }
+            else {
+                this.$root.$router.push(param);
+            }
         }
     }
     

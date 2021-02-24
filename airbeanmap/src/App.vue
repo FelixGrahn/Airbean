@@ -5,6 +5,7 @@
     <!-- felix test 1 -->
     <!-- fredrik test 1 -->
     <!-- sinan test 3 -->
+    Hiva test 1
 
     
     <div id="nav">
@@ -16,6 +17,7 @@
    
     <Nav />
     <HamburgerMenu v-if="this.$root.$data.displayNavMenu" />
+    <Cart v-if="this.$root.$data.displayNavStatus" />
     <router-view />
   </div>
 </template>
@@ -23,18 +25,15 @@
 <script>
 import Nav from "./components/Nav.vue";
 import HamburgerMenu from "./components/Hamburgarmeny.vue";
+import Cart from "./components/Cart.vue";
 
 export default {
   name: "App",
   components: {
     Nav,
     HamburgerMenu,
+    Cart,
   },
-  methods: {
-    hideShowMenu: function() {
-      this.displayNavMenu = !this.displayNavMenu;
-    }
-  }
 };
 </script>
 
