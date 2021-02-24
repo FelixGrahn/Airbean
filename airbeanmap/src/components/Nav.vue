@@ -1,31 +1,31 @@
 <template>
-
-<nav class="navbar">
+  <nav class="navbar">
     <div class="button menu" v-on:click="this.$root.hideShowMenu">
-        <div></div>
-        <div></div>
-        <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
     <div class="button bag" v-on:click="this.$root.hideShowStatus"></div>
-</nav>
-  
+  </nav>
 </template>
 
 <script>
+
+
 export default {
-}
+
+};
 </script>
 
 <style scoped>
-
 .navbar {
-    width:100%;
-    min-height:100px;
-    display:flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    padding:5%;
-    box-sizing:border-box;
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 5%;
+  box-sizing: border-box;
 }
 
 .menu > div {
@@ -33,38 +33,37 @@ export default {
   height: 5px;
   background-color: black;
   margin: 6px 0;
-  margin-left:auto;
-  margin-right:auto;
-  box-sizing:border-box;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 .button > div:nth-child(1) {
-    margin-top:35%;
+  margin-top: 35%;
 }
 
 .button {
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    display:block;
-    background-color:#202020;
-    cursor: pointer;
-    box-sizing:border-box;
-    opacity: 0.8;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: block;
+  background-color: #202020;
+  cursor: pointer;
+  box-sizing: border-box;
+  opacity: 0.8;
 }
 .button:hover {
-    border:4px solid red;
-    opacity: 1;
+  border: 4px solid red;
+  opacity: 1;
 }
 
 .menu {
-    background-color:#EEE;
+  background-color: #eee;
 }
 
 .bag {
-    background-image:url('../assets/bag.png');
-    background-position: center center;
-    background-size:16px 22px;
-    background-repeat:no-repeat;
+  background-image: url("../assets/bag.png");
+  background-position: center center;
+  background-size: 16px 22px;
+  background-repeat: no-repeat;
 }
-
 </style>

@@ -4,6 +4,16 @@
     <div class="imageholder">
       <div class="text-holder">
         <h1 class="MenyHeader">Meny</h1>
+
+        <div class="orderinfo" v-for="(kaffe, index) of this.$root.$data.sortiment" :key="index">
+          <img class="addtocartclass" v-on:click="placeorder($root.$data.sortiment[index])" src="../assets/addtocart.png" />
+          <div class="textspecific">
+            <h1>{{$root.$data.sortiment[index].name}}</h1><h1>{{$root.$data.sortiment[index].price}} kr</h1>
+            <p>{{$root.$data.sortiment[index].desc}}</p>
+          </div>
+        </div>
+
+        <!--
         <div class="orderinfo">
           <img class="addtocartclass" v-on:click="placeorder(1, 'Bryggkaffe', 49)" src="../assets/addtocart.png" />
           <div class="textspecific">
@@ -46,6 +56,7 @@
             <p>Bryggd på månadens bönor</p>
           </div>
         </div>
+        -->
       </div>
     </div>
     
@@ -55,9 +66,20 @@
 <script>
 export default {
   methods: {
-        placeorder(ordernumber, Name, Cost) {
-          alert(ordernumber + Name + Cost);
-        }
+       placeorder(param) {
+          //alert(param.name+" / "+param.price);
+          alert(param.name);
+
+          let addCount=false;
+          for (let i=0;i<this.$root.$data.orders.length;i++) {
+              if (param.name == this.$root.$data.orders[i].name) {
+                alert("Match!");
+                this.$root.$data.orders[i].amount++;
+                addCount=true;
+              }
+          }
+          if (addCount == false) {this.$root.$data.orders.push({name: param.name, price: param.price, amount: 1});}
+       }
     }
 }
 </script>
@@ -110,12 +132,28 @@ align-self: flex-start;
 }
 .textspecific {
   text-align-last: left;
+  display:flex;
+  flex-flow:row wrap;
+  justify-content:space-between;
+  width:450px;
+}
+.textspecific > h1 {
+display:block;
+margin:0;
+padding:0;
+
+}
+.textspecific > h1:nth-child(1) {
+  min-width:200px;
+}
+.textspecific > h1:nth-child(2) {
+  width:20%;
 }
 .addtocartclass {
     width: 10%;
     display: flex;
     height: 10%;
-    padding: 6% 4% 0 0;
+    padding: 2% 4% 0 0;
 }
 .MenyHeader {
   font-weight: 700;

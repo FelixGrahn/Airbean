@@ -38,14 +38,19 @@
         <p>1669 kr</p>
       </div>
     </div>
+    <ProfileOverlay v-if="!this.$root.$data.loggedin" />
   </div>
 </template>
 
 <script>
-export default {};
+import ProfileOverlay from '@/components/ProfileOverlay.vue'
+export default {
+  components: { ProfileOverlay },
+  
+}
 </script>
 
-<style>
+<style scoped>
 .profile {
   display: flex;
   flex-direction: column;

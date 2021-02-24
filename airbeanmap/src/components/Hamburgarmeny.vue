@@ -2,7 +2,7 @@
     <div class="wrapper">
         <!--{{this.$root.$data.displayNavMenu}}-->
         <ul>
-            <li v-for="menu in menuOps" :key="menu" class="option">
+            <li v-for="(menu, index) in menuOps" :key="index" class="option">
                 <div class="link" @click="goto(menu.myUrl)">{{menu.title}}</div>
                 <div class="underline"></div>
             </li>
@@ -63,7 +63,7 @@ export default {
     background-color:rgba(0,0,0,0.9);
     margin-left:auto;
     margin-right:auto;
-    z-index:1;
+    z-index:10;
     position:absolute;
 
 }

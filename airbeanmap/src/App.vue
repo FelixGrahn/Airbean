@@ -16,7 +16,8 @@
     </div>
    
     <Nav />
-    <HamburgerMenu v-if="this.$root.$data.displayNavMenu" />
+  
+    <HamburgerMenu v-if="this.$root.$data.displayNavMenu" /> 
     <Cart v-if="this.$root.$data.displayNavStatus" />
     <router-view />
   </div>

@@ -20,7 +20,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .landing {
     background-color: #0e927d;
     background-image: url("../assets/leaf22.png"), url("../assets/leaf1.png");
