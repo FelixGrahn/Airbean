@@ -14,6 +14,10 @@
       <!-- <router-link to="/Landing">Landing</router-link> | --> 
       <router-link to="/Meny">Meny</router-link>
     </div>
+    <div @click="increment()">
+      <p>test increment</p>
+
+    </div>
    
     <Nav />
   
@@ -35,6 +39,12 @@ export default {
     HamburgerMenu,
     Cart,
   },
+  methods: {
+    increment() {
+    this.$store.commit('increment')
+    console.log(this.$store.state.count)
+  }
+  }
 };
 </script>
 
