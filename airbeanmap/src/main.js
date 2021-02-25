@@ -11,6 +11,10 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  created: {
+    router
+
+  },
   data: function(){
     return {
       displayNavMenu: false,
