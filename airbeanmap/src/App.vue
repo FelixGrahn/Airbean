@@ -7,6 +7,8 @@
     <!-- sinan test 3 -->
     <!-- Hiva test 1 -->
 
+    type something here
+
     
     <div id="nav">
       <router-link to="/">Home</router-link> | 
