@@ -8,7 +8,7 @@
         <div class="orderinfo" v-for="(kaffe, index) of this.$root.$data.sortiment" :key="index">
           <img class="addtocartclass" v-on:click="placeorder($root.$data.sortiment[index])" src="../assets/addtocart.png" />
           <div class="textspecific">
-            <h1>{{$root.$data.sortiment[index].name}}</h1><h1>{{$root.$data.sortiment[index].price}} kr</h1>
+            <h1>{{$root.$data.sortiment[index].name}}</h1><div class="dots"></div><h1>{{$root.$data.sortiment[index].price}} kr</h1>
             <p>{{$root.$data.sortiment[index].desc}}</p>
           </div>
         </div>
@@ -84,7 +84,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+
+
 .Breadview {
   background-color: #f3e4e1;
   width: 100%;
@@ -130,6 +133,14 @@ display: flex;
 align-self: flex-start;
   padding: 0 0 0 9%;
 }
+.dots {
+  height:auto;
+  width:auto;
+  min-width:25%;
+  margin:0;
+  padding:0;
+  border-bottom:2px dotted rgba(0,0,0,0.7);
+}
 .textspecific {
   text-align-last: left;
   display:flex;
@@ -141,12 +152,16 @@ align-self: flex-start;
 display:block;
 margin:0;
 padding:0;
-
 }
 .textspecific > h1:nth-child(1) {
+  /*
   min-width:200px;
+  max-width:250px;
+  */
+  width:auto;
+  max-width:55%;
 }
-.textspecific > h1:nth-child(2) {
+.textspecific > h1:nth-child(3) {
   width:20%;
 }
 .addtocartclass {

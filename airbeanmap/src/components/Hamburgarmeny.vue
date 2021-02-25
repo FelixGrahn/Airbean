@@ -59,7 +59,7 @@ export default {
     align-content: center;
     justify-content: center;
     width:700px;
-    height:100%;
+    height:110%;
     background-color:rgba(0,0,0,0.9);
     margin-left:auto;
     margin-right:auto;
