@@ -5,7 +5,9 @@
       <div></div>
       <div></div>
     </div>
-    <div class="button bag" v-on:click="this.$root.hideShowStatus"></div>
+    <div class="button bag" v-on:click="this.$root.hideShowStatus">
+      <span class="showamount">{{visaantal()}}</span>
+    </div>
   </nav>
 </template>
 
@@ -14,10 +16,19 @@
 
 export default {
 
+  methods: {
+      visaantal: function() {
+        return this.$store.getters.antaldrycker;
+      },
+  }
+
 };
 </script>
 
 <style scoped>
+
+
+
 .navbar {
   width: 100%;
   min-height: 100px;
@@ -50,6 +61,8 @@ export default {
   cursor: pointer;
   box-sizing: border-box;
   opacity: 0.8;
+  margin:0;
+  padding:0;
 }
 .button:hover {
   border: 4px solid red;
@@ -59,11 +72,23 @@ export default {
 .menu {
   background-color: #eee;
 }
-
 .bag {
   background-image: url("../assets/bag.png");
   background-position: center center;
   background-size: 16px 22px;
   background-repeat: no-repeat;
+}
+.showamount {
+  color:white;
+  font-weight:600;
+  font-size:44px;
+  display:block;
+  background-color:red;
+  border-radius:50%;
+  width:50px;
+  height:50px;
+  text-align:center;
+  margin-left:60%;
+  margin-top:-10%;
 }
 </style>

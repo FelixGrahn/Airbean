@@ -69,7 +69,9 @@ export default {
        placeorder(param) {
           //alert(param.name+" / "+param.price);
           alert(param.name);
+          this.$store.commit('addnewitem', param);
 
+          /*
           let addCount=false;
           for (let i=0;i<this.$root.$data.orders.length;i++) {
               if (param.name == this.$root.$data.orders[i].name) {
@@ -79,6 +81,7 @@ export default {
               }
           }
           if (addCount == false) {this.$root.$data.orders.push({name: param.name, price: param.price, amount: 1});}
+          */
        }
     }
 }

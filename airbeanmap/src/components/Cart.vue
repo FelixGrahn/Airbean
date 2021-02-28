@@ -6,7 +6,7 @@
 
     <div class="itemwrapper">
 
-    <div v-for="(kaffe, index) of this.$root.$data.orders" :key="index" class="item">
+          <div v-for="(kaffe, index) of shortcut.orders" :key="index" class="item">
             <div>
               <h2>{{kaffe.name}}</h2>
               <h3>{{kaffe.price}} kr</h3>
@@ -26,9 +26,10 @@
       <div><h2>{{totalcost()}} kr</h2></div>
     </div>
 
+
     </div>
 
-    <div class="button" @click="checkout()" v-if="summa > 0">
+    <div class="button" @click="checkout()" v-if="totalcost() > 0">
       Take my money!
     </div>
 
@@ -41,34 +42,32 @@ export default {
 
   data() {
     return {
-      summa: 0,
+      shortcut: this.$store.state,
     }
-  },
-  computed: {
-      
   },
   methods: {
     add: function(param) {
-      this.$root.$data.orders[param].amount++;
+      this.$store.commit('add', param);
     },
     remove: function(param) {
-      this.$root.$data.orders[param].amount--;
-      if (this.$root.$data.orders[param].amount <= 0) {
-        this.$root.$data.orders.splice(param, 1);
-      }
+      this.$store.commit('remove', param);
+    },
+    totalcost: function() {
+        return this.$store.getters.totalcost;
+        /*
+        let sum=0;
+        for (let i=0;i<this.shortcut.orders.length;i++) {
+                sum+=this.shortcut.orders[i].price*this.shortcut.orders[i].amount;
+        }
+        this.summa=sum;
+        return sum;
+        */
     },
     checkout: function() {
       alert();
     },
-    totalcost: function() {
-        let sum=0;
-        for (let i=0;i<this.$root.$data.orders.length;i++) {
-                sum+=this.$root.$data.orders[i].price*this.$root.$data.orders[i].amount;
-        }
-        this.summa=sum;
-        return sum;
-    },
   }
+  
 
 }
 </script>

@@ -68,9 +68,6 @@ new Vue({
           amount: 0,
         },
       ],
-      
-      orders: [
-      ],
     }
   },
 
