@@ -35,9 +35,9 @@ export default {
         login: function(un, pw) {
             //alert(un + pw);
             //alert(this.$root.$data.logins[0].username);
-            if (un == this.$root.$data.logins[0].username && pw == this.$root.$data.logins[0].password) {
+            if (un == this.$store.$state.logins[0].username && pw == this.$store.$state.logins[0].password) {
                 //alert("login successful!");
-                this.$root.$data.loggedin=true;
+                this.$store.$state.loggedin=true;
             }
         }
     }

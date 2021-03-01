@@ -10,7 +10,14 @@ export default new Vuex.Store({
       {name: "Pulverkaffe", price: 88, amount: 4},
       {name: "Mega-kaffe", price: 138, amount: 1},
     ],
+      logins: [
+        {
+          username: "sixten.kaffelover@zocom.se",
+          password: "123456789",
+        }
+      ],
     count: 0,
+    loggedin: false,
   },
   getters: {
     antaldrycker: state => {

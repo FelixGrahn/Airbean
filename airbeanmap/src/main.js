@@ -23,6 +23,8 @@ new Vue({
     return {
       displayNavMenu: false,
       displayNavStatus: false,
+
+      /*
       loggedin: false,
       logins: [
         {
@@ -30,6 +32,7 @@ new Vue({
           password: "123456789",
         }
       ],
+      */
       sortiment: [
         {
           name: "Bryggkaffe",
