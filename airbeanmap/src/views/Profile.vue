@@ -5,7 +5,25 @@
     <span class="name"> Sixten Kaffelövèr </span>
     <span> sixten.kaffelover@zocom.se </span>
     <h2>Orderhistorik</h2>
-    <div class="grid-container">
+    
+
+        <div class="orderinfo" v-for="(user, index) of this.$store.state.userlist[0].history" :key="index">
+          <div>
+            <span>{{user.ordernum}}</span>
+            <span>{{user.orderdate}}</span>
+            <span>Total ordersumma</span>
+            <span>{{user.ordersum}}</span>
+          </div> 
+          <!-- <img class="addtocartclass" v-on:click="placeorder($root.$data.sortiment[index])" src="../assets/addtocart.png" />
+          <div class="textspecific">
+            <h1>{{$root.$data.sortiment[index].name}}</h1><div class="dots"></div><h1>{{$root.$data.sortiment[index].price}} kr</h1>
+            <p>{{$root.$data.sortiment[index].desc}}</p>
+          </div> -->
+        </div>
+
+
+
+        <div class="grid-container">
       <div class="item1 left">
         <p>#AB1123282323Z</p>
         <p>Total ordersumma</p>
@@ -14,6 +32,8 @@
         <p>20/03/06</p>
         <p>443 kr</p>
       </div>
+      </div>
+      <!-- 
       <div class="item3 left">
         <p>#AB1444482323X</p>
         <p>Total ordersumma</p>
@@ -37,8 +57,12 @@
       <div class="item9 right">
         <p>1669 kr</p>
       </div>
-    </div>
-    <ProfileOverlay v-if="!this.$root.$data.loggedin" />
+      </div>
+       -->
+
+
+    
+    <ProfileOverlay v-if="!this.$store.state.loggedin" />
   </div>
 </template>
 
@@ -51,6 +75,35 @@ export default {
 </script>
 
 <style scoped>
+
+.orderinfo {
+  display:block;
+  width:100%;
+}
+
+.orderinfo > div {
+  display:flex;
+  flex-flow:row wrap;
+  border-bottom:4px solid black;
+  background-color:lime;
+  margin-top:10px;
+  margin-bottom:20px;
+  width:100%;
+}
+div > span {
+  display:block;
+  background-color:blue;
+  width:50%;
+  text-align:left;
+  padding:10px;
+  box-sizing:border-box;
+}
+
+div > span:nth-child(even) {
+  text-align:right;
+}
+
+
 .profile {
   display: flex;
   flex-direction: column;

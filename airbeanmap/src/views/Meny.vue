@@ -1,15 +1,28 @@
 <template>
   <div class="Breadview">
-    <!-- <h1>This is an Bread page</h1> -->
     <div class="imageholder">
       <div class="text-holder">
         <h1 class="MenyHeader">Meny</h1>
 
+        <form class="filterform">
+
+            <label for="filter">Bönor</label>
+            <select @change="beanfilter(message)" v-model="message">
+            <option value="all" selected>Alla</option>
+            <option value="light">Lättrostad</option>
+            <option value="medium">Mellanrostad</option>
+            <option value="dark">Mörkrostad</option>
+            </select>
+
+        </form>
+
         <div class="orderinfo" v-for="(kaffe, index) of this.$root.$data.sortiment" :key="index">
+          <div v-if="hideshow(index)" class="orderinfo_inner">
           <img class="addtocartclass" v-on:click="placeorder($root.$data.sortiment[index])" src="../assets/addtocart.png" />
           <div class="textspecific">
             <h1>{{$root.$data.sortiment[index].name}}</h1><div class="dots"></div><h1>{{$root.$data.sortiment[index].price}} kr</h1>
             <p>{{$root.$data.sortiment[index].desc}}</p>
+          </div>
           </div>
         </div>
 
@@ -65,10 +78,28 @@
 
 <script>
 export default {
+  data: function() {
+    return {
+      message: "all",
+    }
+  },
   methods: {
+        hideshow(param) {
+          let show=false;
+          if (this.$root.$data.sortiment[param].type == this.message || this.message == "all") {show=true;}
+          return show;
+        },
+        beanfilter(param) {
+          let show=false;
+          this.$root.$data.sortiment.forEach((item) => {
+          show=false;
+              if (param == "all" || item.type == param) {show=true;}
+          });
+          return show;
+        },
        placeorder(param) {
           //alert(param.name+" / "+param.price);
-          alert(param.name);
+          //alert(param.name);
           this.$store.commit('addnewitem', param);
 
           /*
@@ -89,7 +120,13 @@ export default {
 
 <style scoped>
 
-
+.filterform {
+  display:flex;
+  width:90%;
+  height:auto;
+  background-color:red;
+  margin: 30px auto;
+}
 
 .Breadview {
   background-color: #f3e4e1;
@@ -134,7 +171,15 @@ export default {
 .orderinfo {
 display: flex;
 align-self: flex-start;
-  padding: 0 0 0 9%;
+padding: 0 0 0 9%;
+}
+.orderinfo_inner {
+display: flex;
+align-self: flex-start;
+padding: 0;
+margin: 0;
+width:100%;
+height:100%;
 }
 .dots {
   height:auto;

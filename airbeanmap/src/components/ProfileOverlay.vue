@@ -4,10 +4,10 @@
 
           <h2>Välkommen till AirBean-familjen!</h2>
           <h3>Genom att skapa ett konto nedan kan du spara och se din orderhistorik.</h3>
-        <form @submit.prevent @submit="login(username, password)">
+        <form @submit.prevent @submit="login(email, password)">
 
             <label for="myname"></label>
-            <input v-model="username" type="text" placeholder="Username" id="myname">
+            <input v-model="email" type="text" placeholder="Email" id="myname">
             <label for="myemail"></label>
             <input v-model="password" type="password" placeholder="Password" id="myemail">
 
@@ -27,19 +27,26 @@ export default {
 
     data() {
         return {
-            username: "",
+            email: "",
             password: "",
         }
     },
     methods: {
         login: function(un, pw) {
+            let obj = {user:un, pass:pw};
+            this.$store.commit('login', obj);
+        }
+        
+        /*
+        login: function(un, pw) {
             //alert(un + pw);
             //alert(this.$root.$data.logins[0].username);
-            if (un == this.$store.$state.logins[0].username && pw == this.$store.$state.logins[0].password) {
+            if (un == this.$store.state.logins[0].username && pw == this.$store.state.logins[0].password) {
                 //alert("login successful!");
-                this.$store.$state.loggedin=true;
+                this.$store.state.loggedin=true;
             }
         }
+        */
     }
 
 }
