@@ -5,6 +5,7 @@
       <div></div>
       <div></div>
     </div>
+    <div>{{this.$router.currentRoute.path}}</div>
     <div class="button bag" v-on:click="hideShowStatus()">
       <span class="showamount">{{visaantal()}}</span>
     </div>
