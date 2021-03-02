@@ -1,24 +1,11 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-    <!-- felix test 1 -->
-    <!-- fredrik test 1 -->
-    <!-- sinan test 3 -->
-    <!-- Hiva test 1 -->
-
-    type something here
-
     
     <div id="nav">
       <router-link to="/">Home</router-link> | 
       <router-link to="/About">About</router-link> | 
       <!-- <router-link to="/Landing">Landing</router-link> | --> 
       <router-link to="/Meny">Meny</router-link>
-    </div>
-    <div @click="increment()">
-      <p>test increment</p>
-
     </div>
    
     <Nav />
@@ -51,6 +38,27 @@ export default {
 </script>
 
 <style>
+
+.button {
+  margin-top:100px;
+  background-color:#2F2926;
+  border:2px solid black;
+  width:248px;
+  height:55px;
+  margin-left:auto;
+  margin-right:auto;
+  cursor:pointer;
+  border-radius:50px;
+  color:white;
+  font-size:2em;
+  font-family:times new roman;
+  line-height:150%;
+}
+.button:hover {
+  background-color:darkgrey;
+  color:black;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

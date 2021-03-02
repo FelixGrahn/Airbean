@@ -15,7 +15,7 @@ new Vue({
   store,
 
   created: {
-    router
+    //router
 
   },
 

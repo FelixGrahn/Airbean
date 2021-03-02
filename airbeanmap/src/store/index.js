@@ -17,7 +17,6 @@ export default new Vuex.Store({
           username: "Tom Hanks",
           email: "test@test.nu",
           password: "123",
-          id: 1,
             history: [{
               ordernum: "7367373647",
               orderdate: "20/20/20",
@@ -38,34 +37,56 @@ export default new Vuex.Store({
           username: "John Doe",
           email: "check@check.nu",
           password: "345",
-          id: 2,
+            history: [{
+            ordernum: "8t498985",
+            orderdate: "13/13/14",
+            ordersum: 22,
+            },
+            {
+            ordernum: "459588959",
+            orderdate: "09/09/09",
+            ordersum: 777,
+            },
+            {
+            ordernum: "9934483483",
+            orderdate: "12/12/12",
+            ordersum: 999,
+            }],
         },
         {
           username: "Sixten K",
           email: "sixten.kaffelover@zocom.se",
           password: "123456789",
-          id: 3,
+            history: [{
+            ordernum: "HJDHGHGJGDHGJ",
+            orderdate: "1/1/1",
+            ordersum: 66,
+            }],
         },
       ],
     count: 0,
     loggedin: false,
+    useractive: 0,
   },
   getters: {
     antaldrycker: state => {
-      //return state.todos.filter(todo => todo.done)
       let siffra=0;
       state.orders.forEach((item) => {
-        //console.log(item.amount) //value
-        //console.log(item.price) //index
         siffra+=item.amount;
       });
       return siffra;
-      //return state.orders[0].amount;
     },
     totalcost: state => {
       let siffra=0;
       state.orders.forEach((item) => {
       siffra+=item.amount*item.price;
+      });
+    return siffra;
+    },
+    totalcost_profile: state => {
+      let siffra=0;
+      state.userlist[state.useractive].history.forEach((item) => {
+      siffra+=item.ordersum;
       });
     return siffra;
     },
@@ -95,8 +116,11 @@ export default new Vuex.Store({
           if (addCount == false) {state.orders.push({name: param.name, price: param.price, amount: 1});}
     },
     login: function(state, param) {
-      if (param.user == state.userlist[0].email && param.pass == state.userlist[0].password) {
+      for (let i=0;i<state.userlist.length;i++) {
+      if (param.user == state.userlist[i].email && param.pass == state.userlist[i].password) {
           state.loggedin=true;
+          state.useractive=i;
+      }
       }
     }
   },

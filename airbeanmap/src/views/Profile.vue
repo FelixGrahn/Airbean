@@ -2,74 +2,53 @@
   <div class="profile">
     <img src="../assets/header-leaf.png" />
     <img class="profile-img" src="../assets/Profile.png" />
-    <span class="name"> Sixten Kaffelövèr </span>
-    <span> sixten.kaffelover@zocom.se </span>
-    <h2>Orderhistorik</h2>
-    
+    <div class="name"> {{this.$store.state.userlist[checkuser].username}} </div>
+    <div> {{this.$store.state.userlist[checkuser].email}} </div>
+    <h2 class="orderh">Orderhistorik</h2>
 
-        <div class="orderinfo" v-for="(user, index) of this.$store.state.userlist[0].history" :key="index">
+        <div class="orderinfo" v-for="(user, index) of this.$store.state.userlist[checkuser].history" :key="index">
           <div>
             <span>{{user.ordernum}}</span>
             <span>{{user.orderdate}}</span>
             <span>Total ordersumma</span>
-            <span>{{user.ordersum}}</span>
-          </div> 
-          <!-- <img class="addtocartclass" v-on:click="placeorder($root.$data.sortiment[index])" src="../assets/addtocart.png" />
+            <span>{{user.ordersum}} kr</span>
+          </div>
+          
+        </div>
+
+        <div class="orderinfo">
+          <div>
+            <span>Totalt spenderat</span>
+            <span>{{totalcost()}} kr</span>
+          </div>
+        </div>
+
+
+<!-- <img class="addtocartclass" v-on:click="placeorder($root.$data.sortiment[index])" src="../assets/addtocart.png" />
           <div class="textspecific">
             <h1>{{$root.$data.sortiment[index].name}}</h1><div class="dots"></div><h1>{{$root.$data.sortiment[index].price}} kr</h1>
             <p>{{$root.$data.sortiment[index].desc}}</p>
           </div> -->
-        </div>
-
-
-
-        <div class="grid-container">
-      <div class="item1 left">
-        <p>#AB1123282323Z</p>
-        <p>Total ordersumma</p>
-      </div>
-      <div class="item2 right">
-        <p>20/03/06</p>
-        <p>443 kr</p>
-      </div>
-      </div>
-      <!-- 
-      <div class="item3 left">
-        <p>#AB1444482323X</p>
-        <p>Total ordersumma</p>
-      </div>
-      <div class="item4 right">
-        <p>20/03/03</p>
-        <p>333 kr</p>
-      </div>
-      <div class="item5 left">
-        <p>#AB1128382323X</p>
-        <p>total ordersumma</p>
-      </div>
-      <div class="item6 right ">
-        <p>20/02/21</p>
-        <p>893 kr</p>
-      </div>
-      <div class="item7"><hr /></div>
-      <div class="item8 left">
-        <p>Totalt spenderat</p>
-      </div>
-      <div class="item9 right">
-        <p>1669 kr</p>
-      </div>
-      </div>
-       -->
-
-
-    
-    <ProfileOverlay v-if="!this.$store.state.loggedin" />
   </div>
 </template>
 
 <script>
-import ProfileOverlay from '@/components/ProfileOverlay.vue'
 export default {
-  components: { ProfileOverlay },
+  data: function() {
+    return {
+      userid: this.$store.state.useractive,
+    }
+  },
+  computed: {
+      checkuser: function() {
+        return this.$store.state.useractive;
+      }
+  },
+  methods: {
+    totalcost: function() {
+        return this.$store.getters.totalcost_profile;
+    },
+  }
   
 }
 </script>
@@ -85,17 +64,18 @@ export default {
   display:flex;
   flex-flow:row wrap;
   border-bottom:4px solid black;
-  background-color:lime;
   margin-top:10px;
   margin-bottom:20px;
-  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+  width:90%;
+  box-sizing:border-box;
 }
 div > span {
   display:block;
   background-color:blue;
   width:50%;
   text-align:left;
-  padding:10px;
   box-sizing:border-box;
 }
 
@@ -109,89 +89,29 @@ div > span:nth-child(even) {
   flex-direction: column;
   align-content: center;
   background-color: #2f2926;
+  color:white;
 }
 .profile-img {
   display: flex;
   align-self: center;
   width: 100px;
 }
-span {
-  color: white;
-}
 .name {
   font-weight: 700;
   font-size: 25px;
   margin-bottom: 10px;
 }
-h2 {
+.orderh {
   color: white;
   font-size: 25px;
-  text-align: start;
-  margin-left: 3em;
-}
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    "item1  item2"
-    "item3  item4"
-    "item5  item6"
-    "item7  item7"
-    "item8  item9";
+  text-align: left;
+  width: 90%;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-.item1 {
-  grid-area: item1;
-}
-.item2 {
-  grid-area: item2;
-}
-.item3 {
-  grid-area: item3;
-}
-.item4 {
-  grid-area: item4;
-}
-.item5 {
-  grid-area: item5;
-}
-.item6 {
-  grid-area: item6;
-}
-.item7 {
-  grid-area: item7;
-}
-.item8 {
-  grid-area: item8;
-}
-.item9 {
-  grid-area: item9;
-}
-.right {
-  justify-self: end;
-  margin-right: 50px;
-}
 
-p {
-  color: white;
-}
-.left > p {
-  text-align: start;
-  margin-left: 4.5em;
-}
-.right > p {
-  text-align: end;
-  margin-right: 4.5em;
-}
-hr {
-  width: 80%;
-  height: 1px;
-  background-color: pink;
-  margin-bottom: 7px;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 9px;
-  border-width: 1px;
-  border-color: white;
-}
+
+
 </style>

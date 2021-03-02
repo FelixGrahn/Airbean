@@ -30,7 +30,7 @@
     </div>
 
     <div class="button" @click="checkout()" v-if="totalcost() > 0">
-      Take my money!
+    Take my money!
     </div>
 
 </div>
@@ -86,25 +86,7 @@ h2, h3 {
 }
 
 
-.button {
-  margin-top:100px;
-  background-color:#2F2926;
-  border:2px solid black;
-  width:248px;
-  height:55px;
-  margin-left:auto;
-  margin-right:auto;
-  cursor:pointer;
-  border-radius:50px;
-  color:white;
-  font-size:2em;
-  font-family:times new roman;
-  line-height:150%;
-}
-.button:hover {
-  background-color:darkgrey;
-  color:black;
-}
+
 
 .wrapper {
     display:flex;
