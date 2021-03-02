@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <div class="container bottomImg">
+    <Nav :hideCart= "true" />
     <span class="header">Vårt Kaffe</span>
     <p class="bold">
       Pumpkin spice mug, barista cup, sit macchiato, kopi-luwak, doppio, grounds
@@ -36,39 +37,23 @@
 </template>
 
 <script>
-export default {};
+import Nav from "@/components/Nav.vue";
+export default {
+  components: {
+    Nav,
+  },
+  };
 </script>
 
 <style scoped>
 
-.imageholderx {
-  background-image: url("../assets/header-leaf.png"), url("../assets/footer-leaf.png");
-  background-repeat: no-repeat;
-    background-position: center top, center bottom;
-    background-size: 100%, 100%;
-    height: 100%;
-    width: 100%;
-    margin: 0%;
-    padding: 0%;
-    z-index: -1;
-    display: flex;
-    justify-content: center;
-    flex-flow: column;
-    padding: 36% 0 23% 0
-}
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #f3e4e1;
-  padding:0;
-  width:100%;
-  background-image: url("../assets/header-leaf.png"), url("../assets/footer-leaf.png");
-  background-repeat: no-repeat;
-  background-position: center top, center bottom;
-  background-size: 100%, 100%;
-  padding: 36% 0 23% 0
+  padding-bottom: 180px;
 }
 .header {
  font-size: 35px;

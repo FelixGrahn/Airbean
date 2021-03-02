@@ -1,12 +1,11 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar backgroundImg">
     <div class="button menu" v-on:click="hideShowMenu()">
       <div></div>
       <div></div>
       <div></div>
     </div>
-    <div>{{this.$router.currentRoute.path}}</div>
-    <div class="button bag" v-on:click="hideShowStatus()">
+    <div class="button bag" v-on:click="hideShowStatus()" v-if="!hideCart">
       <span class="showamount">{{visaantal()}}</span>
     </div>
   </nav>
@@ -17,6 +16,9 @@
 
 export default {
 
+  props: {
+      hideCart : Boolean
+  },
   methods: {
       visaantal: function() {
         return this.$store.getters.antaldrycker;
@@ -41,16 +43,23 @@ export default {
 
 <style scoped>
 
-
+.backgroundImg {
+  background-image: url("../assets/header-leaf.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100%;
+  
+}
 
 .navbar {
   width: 100%;
-  min-height: 100px;
+  min-height: 120px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   padding: 5%;
   box-sizing: border-box;
+  padding-bottom: 80px;
 }
 
 .menu > div {

@@ -12,7 +12,7 @@ export default {
             alert ()
         },
         ChangePage: function() {
-            this.$root.$router.push("About")
+            this.$root.$router.push("/Meny")
         }
     } 
     

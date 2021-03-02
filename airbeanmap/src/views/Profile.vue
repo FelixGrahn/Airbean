@@ -1,6 +1,7 @@
 <template>
   <div class="profile">
-    <img src="../assets/header-leaf.png" />
+    <Nav :hideCart= "true" />
+    
     <img class="profile-img" src="../assets/Profile.png" />
     <div class="name"> {{this.$store.state.userlist[checkuser].username}} </div>
     <div> {{this.$store.state.userlist[checkuser].email}} </div>
@@ -33,7 +34,11 @@
 </template>
 
 <script>
+import Nav from "@/components/Nav.vue";
 export default {
+  components: {
+    Nav,
+  },
   data: function() {
     return {
       userid: this.$store.state.useractive,
@@ -90,6 +95,7 @@ div > span:nth-child(even) {
   align-content: center;
   background-color: #2f2926;
   color:white;
+  min-height: 1000px;
 }
 .profile-img {
   display: flex;

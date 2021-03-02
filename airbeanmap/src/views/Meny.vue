@@ -1,6 +1,7 @@
 <template>
   <div class="Breadview">
-    <div class="imageholder">
+    <Nav />
+    <div class="bottomImg">
       <div class="text-holder">
         <h1 class="MenyHeader">Meny</h1>
 
@@ -70,15 +71,20 @@
             <p>Bryggd på månadens bönor</p>
           </div>
         </div>
-        -->
+       -->
       </div>
+       
     </div>
     
   </div>
 </template>
 
 <script>
+import Nav from "@/components/Nav.vue";
 export default {
+  components: {
+    Nav,
+  },
   data: function() {
     return {
       message: "all",
@@ -148,6 +154,8 @@ export default {
     z-index: -2; */
     
 }
+
+
 .imageholder {
   background-image: url("../assets/header-leaf.png"), url("../assets/footer-leaf.png");
   background-repeat: no-repeat;

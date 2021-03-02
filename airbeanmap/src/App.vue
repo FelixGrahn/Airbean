@@ -8,7 +8,7 @@
       <router-link to="/Meny">Meny</router-link>
     </div>
    
-    <Nav />
+    <!-- <Nav /> -->
   
     <HamburgerMenu v-if="this.$store.state.displayNavMenu" /> 
     <Cart v-if="this.$store.state.displayNavStatus" />
@@ -17,14 +17,14 @@
 </template>
 
 <script>
-import Nav from "./components/Nav.vue";
+// import Nav from "./components/Nav.vue";
 import HamburgerMenu from "./components/Hamburgarmeny.vue";
 import Cart from "./components/Cart.vue";
 
 export default {
   name: "App",
   components: {
-    Nav,
+    //Nav,
     HamburgerMenu,
     Cart,
   },
@@ -38,7 +38,15 @@ export default {
 </script>
 
 <style>
-
+.bottomImg {
+  background-image: url("./assets/footer-leaf.png");
+  background-repeat: no-repeat;
+    background-position:center bottom;
+    background-size:100%;
+    display: flex;
+    flex-flow: column;
+    padding-bottom: 190px;
+ }
 .button {
   margin-top:10px;
   background-color:#2F2926;
