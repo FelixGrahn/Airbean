@@ -1,38 +1,25 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from "vue";
+import App from "./App.vue";
 import router from "./router";
-import store from './store'
+import store from "./store";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* new Vue({
   render: h => h(App),
 }).$mount('#app') */
 
-
 new Vue({
   router,
   store,
 
-  created: {
-    //router
+  // created: {
+  //   //router
 
-  },
+  // },
 
-  data: function(){
+  data: function() {
     return {
-      displayNavMenu: false,
-      displayNavStatus: false,
-
-      /*
-      loggedin: false,
-      logins: [
-        {
-          username: "sixten.kaffelover@zocom.se",
-          password: "123456789",
-        }
-      ],
-      */
       sortiment: [
         {
           name: "Bryggkaffe",
@@ -40,6 +27,7 @@ new Vue({
           desc: "Bryggd på månadens bönor",
           amount: 0,
           type: "medium",
+          info: "info coming soon"
         },
         {
           name: "Caffé Doppio",
@@ -47,6 +35,7 @@ new Vue({
           desc: "Bryggd på månadens bönor",
           amount: 0,
           type: "dark",
+          info: "info coming soon"
         },
         {
           name: "Cappuccino",
@@ -54,6 +43,7 @@ new Vue({
           desc: "Bryggd på månadens bönor",
           amount: 0,
           type: "light",
+          info: "info coming soon"
         },
         {
           name: "Latte Macchiato",
@@ -61,6 +51,7 @@ new Vue({
           desc: "Bryggd på månadens bönor",
           amount: 0,
           type: "dark",
+          info: "info coming soon"
         },
         {
           name: "Kaffe Latte",
@@ -68,6 +59,7 @@ new Vue({
           desc: "Bryggd på månadens bönor",
           amount: 0,
           type: "light",
+          info: "info coming soon"
         },
         {
           name: "Cortado",
@@ -75,23 +67,11 @@ new Vue({
           desc: "Bryggd på månadens bönor",
           amount: 0,
           type: "dark",
+          info: "info coming soon"
         },
       ],
-    }
+    };
   },
 
-  methods: {
-    hideShowMenu() {
-      this.displayNavMenu = !this.displayNavMenu;
-      if (this.displayNavMenu) {this.displayNavStatus=false;}
-    },
-    hideShowStatus() {
-      this.displayNavStatus = !this.displayNavStatus;
-      if (this.displayNavStatus) {this.displayNavMenu=false;}
-    },
-    showStatus() {
-      this.displayNavStatus = true;
-    }
-  },
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");

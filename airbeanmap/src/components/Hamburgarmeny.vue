@@ -37,9 +37,9 @@ export default {
     },
     methods: {
         goto: function(param) {
-            this.$root.hideShowMenu();
+            this.$store.commit("hideShowMenu");
             if (param.length == 0) {
-                this.$root.showStatus();
+                this.$store.commit("showStatus");
             }
             else {
                 this.$root.$router.push(param);

@@ -10,8 +10,8 @@
    
     <Nav />
   
-    <HamburgerMenu v-if="this.$root.$data.displayNavMenu" /> 
-    <Cart v-if="this.$root.$data.displayNavStatus" />
+    <HamburgerMenu v-if="this.$store.state.displayNavMenu" /> 
+    <Cart v-if="this.$store.state.displayNavStatus" />
     <router-view />
   </div>
 </template>
@@ -40,7 +40,7 @@ export default {
 <style>
 
 .button {
-  margin-top:100px;
+  margin-top:10px;
   background-color:#2F2926;
   border:2px solid black;
   width:248px;

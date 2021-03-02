@@ -20,8 +20,9 @@
           <div v-if="hideshow(index)" class="orderinfo_inner">
           <img class="addtocartclass" v-on:click="placeorder($root.$data.sortiment[index])" src="../assets/addtocart.png" />
           <div class="textspecific">
-            <h1>{{$root.$data.sortiment[index].name}}</h1><div class="dots"></div><h1>{{$root.$data.sortiment[index].price}} kr</h1>
+            <h1 @click="merInfo(index)" class="h1-link">{{$root.$data.sortiment[index].name}}</h1><div class="dots"></div><h1>{{$root.$data.sortiment[index].price}} kr</h1>
             <p>{{$root.$data.sortiment[index].desc}}</p>
+            <p v-if="index == showruta" class="info">{{$root.$data.sortiment[index].info}}</p>
           </div>
           </div>
         </div>
@@ -81,6 +82,7 @@ export default {
   data: function() {
     return {
       message: "all",
+      showruta: -1,
     }
   },
   methods: {
@@ -113,6 +115,9 @@ export default {
           }
           if (addCount == false) {this.$root.$data.orders.push({name: param.name, price: param.price, amount: 1});}
           */
+       },
+       merInfo(param) {
+         this.showruta = param;
        }
     }
 }
@@ -221,5 +226,19 @@ padding:0;
 .MenyHeader {
   font-weight: 700;
   font-size: 464%;
+}
+.h1-link {
+  cursor: pointer;
+
+}
+.h1-link:hover {
+  color: orange;
+}
+.info {
+  background-color: white;
+  width: 70%;
+  border: 2px solid black;
+  min-height: 90px;
+  padding: 10px;
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
   <nav class="navbar">
-    <div class="button menu" v-on:click="this.$root.hideShowMenu">
+    <div class="button menu" v-on:click="hideShowMenu()">
       <div></div>
       <div></div>
       <div></div>
     </div>
-    <div class="button bag" v-on:click="this.$root.hideShowStatus">
+    <div class="button bag" v-on:click="hideShowStatus()">
       <span class="showamount">{{visaantal()}}</span>
     </div>
   </nav>
@@ -20,7 +20,20 @@ export default {
       visaantal: function() {
         return this.$store.getters.antaldrycker;
       },
-  }
+      hideShowMenu() {
+        this.$store.commit('hideShowMenu')
+      },
+      hideShowStatus() {
+        this.$store.commit('hideShowStatus')
+      },
+      
+  },
+  // computed: {
+  //     check: function(param) {
+  //       return this.$store.state.param;
+  //     }
+  // },
+  
 
 };
 </script>
