@@ -61,26 +61,30 @@ export default {
     },
     totalcost: function() {
       return this.$store.getters.totalcost;
-      /*
-        let sum=0;
-        for (let i=0;i<this.shortcut.orders.length;i++) {
-                sum+=this.shortcut.orders[i].price*this.shortcut.orders[i].amount;
-        }
-        this.summa=sum;
-        return sum;
-        */
     },
     checkout: function() {
       let param = "/About"
-      
       if (this.$store.getters.checklogin) {
         param = "/Status"
-
-      }this.$root.$router.push(param);
+        this.hideShowStatus();
+        let d=new Date();
+        let order_id = d.getTime();
+        let today = d.getFullYear()+"/"+((d.getMonth() + 1) > 9 ? '' : '0') + (d.getMonth() + 1)+"/"+(d.getDate() > 9 ? '' : '0') + d.getDate();
+        this.$store.commit("pushNewOrder", { ordernum: order_id, orderdate: today, ordersum: this.totalcost(), myitems: this.shortcut.orders });
+      }
+      this.$root.$router.push(param);
 
     },
+    /*
+    datefixer: function(param) {
+      if (param.length < 2) {
+
+      }
+      return param;
+    },
+    */
     hideShowStatus() {
-        this.$store.commit('hideShowStatus')
+        this.$store.commit('hideShowStatus');
     },
   },
 };
@@ -126,7 +130,7 @@ h3 {
   display: block;
   height: 500px;
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 

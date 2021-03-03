@@ -65,6 +65,7 @@ export default {
 <style>
 .StatusMain {
   background-color: orangered;
+  color:white;
   height: 1080px;
   width: 100%;
   margin: 0%;

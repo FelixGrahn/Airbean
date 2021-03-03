@@ -12,6 +12,56 @@ export default new Vuex.Store({
       {name: "Mega-kaffe", price: 138, amount: 1},
       */
     ],
+    sortiment: [
+      {
+        name: "Bryggkaffe",
+        price: 49,
+        desc: "Bryggd på månadens bönor",
+        amount: 0,
+        type: "medium",
+        info:"Bryggkaffe är en tradition som huvudsakligen växt fram i norra Europa och Nordamerika. Malningsgraden på kaffepulvret är generellt grövre än för bryggning av espresso eller moka. Det har samma funktion som för dessa på så sätt att malningsgraden påverkar bryggtiden för kaffet och behöver anpassas efter storlek på bryggaren."
+      },
+      {
+        name: "Caffé Doppio",
+        price: 49,
+        desc: "Bryggd på månadens bönor",
+        amount: 0,
+        type: "dark",
+        info: "Caffè Doppio är kaffe som bryggs på en espressomaskin. Det är dubbel mängd kaffe i både mängd råvara och färdig dryck jämfört med enkel espresso.",
+      },
+      {
+        name: "Cappuccino",
+        price: 22,
+        desc: "Bryggd på månadens bönor",
+        amount: 0,
+        type: "light",
+        info: "Cappuccino är kaffe som bryggs på en espressomaskin med skummad mjölk. Mjölken gör kaffet mjukare och sötare och serveras då med en enkel espresso som bas. ",
+      },
+      {
+        name: "Latte Macchiato",
+        price: 49,
+        desc: "Bryggd på månadens bönor",
+        amount: 0,
+        type: "dark",
+        info: "Latte macchiato är väl skummad mjölk som fläckas med kaffe som bryggs på en espressomaskin.",
+      },
+      {
+        name: "Kaffe Latte",
+        price: 56,
+        desc: "Bryggd på månadens bönor",
+        amount: 0,
+        type: "light",
+        info: "Caffè latte är kaffe som bryggs på en espressomaskin med ångvärmd mjölk. Mjölken gör kaffet mjukare och sötare.",
+      },
+      {
+        name: "Cortado",
+        price: 49,
+        desc: "Bryggd på månadens bönor",
+        amount: 0,
+        type: "dark",
+        info: "Cortado är en spansk kaffedryck som görs med måtten 50/50. Lika mycket espressokaffe som mjölk. Serveras traditionellt i ett litet glas. Ordet cortado kommer från det spanska verbet cortar, som betyder att skära. Med det menar man egentligen att man minskar syrligheten från kaffet genom att spä ut den med lite mjölk.",
+      },
+    ],
     userlist: [
       {
         username: "Tom Hanks",
@@ -19,19 +69,10 @@ export default new Vuex.Store({
         password: "123",
         history: [
           {
-            ordernum: "7367373647",
-            orderdate: "20/20/20",
-            ordersum: 333,
-          },
-          {
-            ordernum: "8r9090e3",
-            orderdate: "21/21/21",
-            ordersum: 55,
-          },
-          {
-            ordernum: "9898989385",
-            orderdate: "19/10/05",
-            ordersum: 87,
+            ordernum: "",
+            orderdate: "",
+            ordersum: 0,
+            myitems: [],
           },
         ],
       },
@@ -41,19 +82,10 @@ export default new Vuex.Store({
         password: "345",
         history: [
           {
-            ordernum: "8t498985",
-            orderdate: "13/13/14",
-            ordersum: 22,
-          },
-          {
-            ordernum: "459588959",
-            orderdate: "09/09/09",
-            ordersum: 777,
-          },
-          {
-            ordernum: "9934483483",
-            orderdate: "12/12/12",
-            ordersum: 999,
+            ordernum: "",
+            orderdate: "",
+            ordersum: 0,
+            myitems: [],
           },
         ],
       },
@@ -63,9 +95,10 @@ export default new Vuex.Store({
         password: "123456789",
         history: [
           {
-            ordernum: "HJDHGHGJGDHGJ",
-            orderdate: "1/1/1",
-            ordersum: 66,
+            ordernum: "",
+            orderdate: "",
+            ordersum: 0,
+            myitems: [],
           },
         ],
       },
@@ -135,6 +168,10 @@ export default new Vuex.Store({
       if (addCount == false) {
         state.orders.push({ name: param.name, price: param.price, amount: 1 });
       }
+    },
+    pushNewOrder: function(state, payload) {
+        state.userlist[state.useractive].history.unshift(payload);
+        state.orders=[];
     },
     loginfromlocal: function(state, payload) {
       state.loggedin = true;

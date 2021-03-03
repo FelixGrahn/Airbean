@@ -7,73 +7,33 @@
 
         <form class="filterform">
 
-            <label for="filter">Bönor</label>
             <select @change="beanfilter(message)" v-model="message">
-            <option value="all" selected>Alla</option>
-            <option value="light">Lättrostad</option>
-            <option value="medium">Mellanrostad</option>
-            <option value="dark">Mörkrostad</option>
+            <option value="all" selected>Alla Bönor</option>
+            <option value="light">Lättrostade</option>
+            <option value="medium">Mellanrostade</option>
+            <option value="dark">Mörkrostade</option>
             </select>
 
         </form>
 
-        <div class="orderinfo" v-for="(kaffe, index) of this.$root.$data.sortiment" :key="index">
+        <div class="minheight">
+
+        <div class="orderinfo" v-for="(kaffe, index) of this.$store.state.sortiment" :key="index">
           <div v-if="hideshow(index)" class="orderinfo_inner">
           <div class="addtocartclass">
-          <img class="imgadd" v-on:click="placeorder($root.$data.sortiment[index])" src="../assets/addtocart.png" />
+          <img class="imgadd" v-on:click="placeorder($store.state.sortiment[index])" src="../assets/addtocart.png" />
           </div>
           <div class="textspecific">
-            <h1 @click="merInfo(index)" class="h1-link">{{$root.$data.sortiment[index].name}}</h1><div class="dots"></div><h1>{{$root.$data.sortiment[index].price}} kr</h1>
-            <p>{{$root.$data.sortiment[index].desc}}</p>
-            <p v-if="index == showruta" class="info">{{$root.$data.sortiment[index].info}}</p>
+            <h1 @click="merInfo(index)" class="h1-link">{{$store.state.sortiment[index].name}}</h1><div class="dots"></div>
+            <h1>{{$store.state.sortiment[index].price}} kr</h1>
+            <p>{{$store.state.sortiment[index].desc}}</p>
+            <p v-if="index == showruta" class="info">{{$store.state.sortiment[index].info}}</p>
           </div>
           </div>
         </div>
 
-        <!--
-        <div class="orderinfo">
-          <img class="addtocartclass" v-on:click="placeorder(1, 'Bryggkaffe', 49)" src="../assets/addtocart.png" />
-          <div class="textspecific">
-            <h1>Bryggkaffe.................. 49 kr</h1>
-            <p>Bryggd på månadens bönor</p>
-          </div>
         </div>
-        <div class="orderinfo">
-          <img class="addtocartclass" v-on:click="placeorder(2, 'Ceffé Doppio', 49)" src="../assets/addtocart.png" />
-          <div class="textspecific">
-            <h1>Ceffé Doppio............... 49 kr</h1>
-            <p>Bryggd på månadens bönor</p>
-          </div>
-        </div>
-        <div class="orderinfo">
-          <img class="addtocartclass" v-on:click="placeorder(3, 'Cappuccino', 49)" src="../assets/addtocart.png" />
-          <div class="textspecific">
-            <h1>Cappuccino.................. 49 kr</h1>
-            <p>Bryggd på månadens bönor</p>
-          </div>
-        </div>
-        <div class="orderinfo">
-          <img class="addtocartclass" v-on:click="placeorder(4, 'Latte Macchiato', 49)" src="../assets/addtocart.png" />
-          <div class="textspecific">
-            <h1>Latte Macchiato............ 49 kr</h1>
-            <p>Bryggd på månadens bönor</p>
-          </div>
-        </div>
-        <div class="orderinfo">
-          <img class="addtocartclass" v-on:click="placeorder(5, 'Kaffe Latte', 49)" src="../assets/addtocart.png" />
-          <div class="textspecific">
-            <h1>Kaffe Latte.................. 49 kr</h1>
-            <p>Bryggd på månadens bönor</p>
-          </div>
-        </div>
-        <div class="orderinfo">
-          <img class="addtocartclass" v-on:click="placeorder(6, 'Cortado', 39)" src="../assets/addtocart.png" />
-          <div class="textspecific">
-            <h1>Cortado.................. 39 kr</h1>
-            <p>Bryggd på månadens bönor</p>
-          </div>
-        </div>
-       -->
+
       </div>
        
     </div>
@@ -96,12 +56,12 @@ export default {
   methods: {
         hideshow(param) {
           let show=false;
-          if (this.$root.$data.sortiment[param].type == this.message || this.message == "all") {show=true;}
+          if (this.$store.state.sortiment[param].type == this.message || this.message == "all") {show=true;}
           return show;
         },
         beanfilter(param) {
           let show=false;
-          this.$root.$data.sortiment.forEach((item) => {
+          this.$store.state.sortiment.forEach((item) => {
           show=false;
               if (param == "all" || item.type == param) {show=true;}
           });
@@ -134,28 +94,31 @@ export default {
 
 <style scoped>
 
+h1 {
+  font-family:var(--hfont);
+}
+p {
+  font-family:var(--brodtext);
+}
+
 .filterform {
   display:flex;
   width:90%;
   height:auto;
-  background-color:red;
   margin: 30px auto;
+}
+
+select {
+  font-family:var(--hfont);
+  font-size:1.5em;
+  background-color:rgba(255,255,255,0.5);
+  margin-left:1.2em;
 }
 
 .Breadview {
   background-color: #f3e4e1;
   width: 100%;
-  
-    /* background-color: #0e927d;
-    height: 1080px;
-    width: 100%;
-    margin: 0%;
-    padding: 0%;
-    display: flex;
-    justify-content: space-evenly;
-    position: relative;
-    z-index: -2; */
-    
+  min-height:var(--minheight);
 }
 
 
@@ -184,10 +147,19 @@ export default {
   justify-content: center;
   flex-flow: column;
 }
+.minheight {
+  min-height:600px;
+  padding:0;
+  width:90%;
+  margin:0;
+  background-color:blue;
+}
 .orderinfo {
 display: flex;
 align-self: flex-start;
 padding: 0 0 0 9%;
+width:100%;
+background-color:red;
 }
 .orderinfo_inner {
 display: flex;
@@ -261,9 +233,11 @@ padding:0;
 }
 .info {
   background-color: white;
+  font-weight:600;
+  line-height:1.5em;
+  color:black;
   width: 90%;
   border: 2px solid black;
-  min-height: 90px;
   padding: 10px;
   text-align:left;
 }

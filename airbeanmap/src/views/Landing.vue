@@ -37,5 +37,6 @@ export default {
 .Logo2 {
 justify-self: center;
 align-self: center;
+cursor:pointer;
 }
 </style>

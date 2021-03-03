@@ -47,6 +47,17 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+
+:root {
+--hfont: 'PT Serif', serif;
+--brodtext: 'Work Sans', sans-serif;
+--minheight: 1000px;
+}
+
+
 .bottomImg {
   background-image: url("./assets/footer-leaf.png");
   background-repeat: no-repeat;
@@ -88,16 +99,4 @@ export default {
   margin-right:auto;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

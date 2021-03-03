@@ -74,17 +74,6 @@ export default {
             let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
         }
-        
-        /*
-        login: function(un, pw) {
-            //alert(un + pw);
-            //alert(this.$root.$data.logins[0].username);
-            if (un == this.$store.state.logins[0].username && pw == this.$store.state.logins[0].password) {
-                //alert("login successful!");
-                this.$store.state.loggedin=true;
-            }
-        }
-        */
     }
 
 }
@@ -111,16 +100,6 @@ h2 {
 }
 
 .wrapper {
-    /*
-    display:flex;
-    flex-flow:column nowrap;
-    align-content: center;
-    justify-content: center;
-    width:700px;
-    height:100%;
-    z-index:1;
-    position:absolute;
-    */
     display:flex;
     flex-flow:column nowrap;
     align-content: center;
@@ -132,8 +111,6 @@ h2 {
     margin-right:auto;
     z-index:5;
     position:absolute;
-
-
 }
 
 .innerWrapper {
@@ -169,7 +146,6 @@ label {
     display:block;
     text-align:left;
     font-size:1em;
-    background-color:red;
     font-size:1.1em;
 }
 .gdpr {

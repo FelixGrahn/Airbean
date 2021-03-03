@@ -7,17 +7,29 @@
     <div> {{this.$store.state.userlist[checkuser].email}} </div>
     <h2 class="orderh">Orderhistorik</h2>
 
-        <div class="orderinfo" v-for="(user, index) of this.$store.state.userlist[checkuser].history" :key="index">
-          <div>
+        <div class="orderinfo"
+        v-for="(user, index) of this.$store.state.userlist[checkuser].history"
+        :key="index"
+        @click="merInfo(index)"
+        >
+          <div v-if="user.ordersum > 0">
             <span>{{user.ordernum}}</span>
             <span>{{user.orderdate}}</span>
             <span>Total ordersumma</span>
             <span>{{user.ordersum}} kr</span>
+            <span  class="info" v-if="index == showruta">
+              <ul>
+              <li class="liststyle"><span class="infoleft">Item Name:</span><span class="inforight">Amount</span></li>
+              <li v-for="(items, index) of $store.state.userlist[checkuser].history[index].myitems" :key="index">
+                  <span class="infoleft">{{items.name}}</span><span class="inforight">{{items.amount}}</span>
+              </li>
+              </ul>
+            </span>
           </div>
           
         </div>
 
-        <div class="orderinfo">
+        <div class="orderinfo2" v-if="totalcost() > 0">
           <div>
             <span>Totalt spenderat</span>
             <span>{{totalcost()}} kr</span>
@@ -42,6 +54,7 @@ export default {
   data: function() {
     return {
       userid: this.$store.state.useractive,
+      showruta: -1,
     }
   },
   computed: {
@@ -53,6 +66,10 @@ export default {
     totalcost: function() {
         return this.$store.getters.totalcost_profile;
     },
+    merInfo(param) {
+         if (param == this.showruta) {this.showruta=-1;}
+         else {this.showruta = param;}
+    },
   }
   
 }
@@ -60,12 +77,12 @@ export default {
 
 <style scoped>
 
-.orderinfo {
+.orderinfo, .orderinfo2 {
   display:block;
   width:100%;
 }
 
-.orderinfo > div {
+.orderinfo > div, .orderinfo2 > div {
   display:flex;
   flex-flow:row wrap;
   border-bottom:4px solid black;
@@ -76,9 +93,14 @@ export default {
   width:90%;
   box-sizing:border-box;
 }
+.orderinfo {
+  cursor:pointer;
+}
+.orderinfo > div:hover {
+  background-color:rgba(255,255,255,0.5);
+}
 div > span {
   display:block;
-  background-color:blue;
   width:50%;
   text-align:left;
   box-sizing:border-box;
@@ -117,7 +139,40 @@ div > span:nth-child(even) {
   margin-right:auto;
 }
 
+.info {
+  background-color: white;
+  width: 100%;
+  border: 2px solid black;
+  min-height: 90px;
+  padding: 10px;
+  box-sizing:border-box;
+  text-align:left;
+  color:black;
+}
 
+.infoleft, .inforight {
+  text-align:left;
+  width:50%;
+  padding:0;
+  margin:0;
+  display:inline-block;
+}
+.inforight {
+  text-align:right;
+}
+li {
+  list-style:none;
+}
+li:first-child {
+  font-weight:900;
+}
+ul {
+  padding-left:0;
+}
+li {
+  padding:10px 0;
+  border-bottom:1px solid #000;
+}
 
 
 </style>
