@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+      <Nav :hideCart="true" :bgimage="true" />
       <div class="innerWrapper">
             <img src="@/assets/Group6.png" class="img" alt="image">
           <h2>Välkommen till AirBean-familjen!</h2>
@@ -30,6 +31,8 @@
 </template>
 
 <script>
+import Nav from "@/components/Nav.vue";
+  
 export default {
 
     data() {
@@ -40,19 +43,36 @@ export default {
             checked: false,
         }
     },
+    components: {
+    Nav,
+    },
     methods: {
         login: function(un, pw) {
             this.errorlog=[];
+            let emailok = this.validEmail(un);
 
             if (this.email.length <= 0 || this.password <= 0) {
                 this.errorlog.push("Fields can't be blank.");
             }
             if (!this.checked) {
-                this.errorlog.push("You must accept DGPR.");
+                this.errorlog.push("You must accept GDPR.");
+            }
+            if (!emailok) {
+                this.errorlog.push("Email must be valid.");
             }
 
-            if (this.errorlog.length <= 0) {this.$store.commit('login', {user:un, pass:pw});}
+            if (this.errorlog.length <= 0) {
+                this.$store.commit('login', {user:un, pass:pw});
+                if (!this.$store.getters.checklogin) {
+                    this.errorlog.push("Wrong email and/or password.");
+                }
+            }
             
+        }
+        ,
+        validEmail: function (email) {
+            let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
         }
         
         /*
@@ -77,7 +97,6 @@ export default {
     background-color:white;
     color:red;
     width:70%;
-    min-height:100px;
     margin-bottom:40px;
     text-align:left;
     font-weight:900;
@@ -111,7 +130,7 @@ h2 {
     background-color:rgba(0,0,0,0.9);
     margin-left:auto;
     margin-right:auto;
-    z-index:10;
+    z-index:5;
     position:absolute;
 
 
@@ -125,7 +144,7 @@ h2 {
     width:90%;
     height:90%;
     background-color:#F3E4E1;
-    margin: 130px auto 20px auto;
+    margin: 0px auto 20px auto;
     padding:100px 0 0 0;
     color:rgba(0,0,0,0.7);
 }

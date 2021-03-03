@@ -1,10 +1,11 @@
 <template>
-  <nav class="navbar backgroundImg">
-    <div class="button menu" v-on:click="hideShowMenu()">
+  <nav class="navbar" :class="{backgroundImg : !bgimage}">
+    <div class="button menu" v-on:click="hideShowMenu()" v-if="!hideMenu">
       <div></div>
       <div></div>
       <div></div>
     </div>
+    <div class="button_invisible" v-else></div>
     <div class="button bag" v-on:click="hideShowStatus()" v-if="!hideCart">
       <span class="showamount">{{visaantal()}}</span>
     </div>
@@ -17,7 +18,9 @@
 export default {
 
   props: {
-      hideCart : Boolean
+      hideCart : Boolean,
+      hideMenu : Boolean,
+      bgimage: Boolean,
   },
   methods: {
       visaantal: function() {
@@ -75,17 +78,19 @@ export default {
   margin-top: 35%;
 }
 
-.button {
+.button, .button_invisible {
   width: 90px;
   height: 90px;
-  border-radius: 50%;
   display: block;
-  background-color: #202020;
-  cursor: pointer;
   box-sizing: border-box;
-  opacity: 0.8;
   margin:0;
   padding:0;
+}
+.button {
+  border-radius: 50%;
+  background-color: #202020;
+  cursor: pointer;
+  opacity: 0.8;
 }
 .button:hover {
   border: 4px solid red;

@@ -1,9 +1,14 @@
 <template>
     <div class="wrapper">
         <!--{{this.$root.$data.displayNavMenu}}-->
+        <div class="button" v-on:click="hideShowMenu()"><span class="plus">+</span></div>
         <ul>
             <li v-for="(menu, index) in menuOps" :key="index" class="option">
                 <div class="link" @click="goto(menu.myUrl)">{{menu.title}}</div>
+                <div class="underline"></div>
+            </li>
+            <li class="option" v-if="this.$store.state.loggedin">
+                <div class="link" @click="localKill()">Logga ut</div>
                 <div class="underline"></div>
             </li>
         </ul>
@@ -44,6 +49,12 @@ export default {
             else {
                 this.$root.$router.push(param);
             }
+        },
+        hideShowMenu() {
+            this.$store.commit('hideShowMenu');
+        },
+        localKill() {
+            this.$store.commit('logout');
         }
     }
     
@@ -52,12 +63,28 @@ export default {
 
 <style scoped>
 
+.plus {
+    transform: rotate(45deg);
+    width:100%;
+    height:100%;
+    display:block;
+}
+.button {
+    width:90px;
+    height:90px;
+    font-size:7em;
+    line-height:75%;
+    text-align:center;
+    padding: 0;
+    margin: 35px auto 200px 35px;
+    box-sizing:border-box;
+}
+
 .wrapper {
 
     display:flex;
     flex-flow:column nowrap;
     align-content: center;
-    justify-content: center;
     width:700px;
     height:110%;
     background-color:rgba(0,0,0,0.9);

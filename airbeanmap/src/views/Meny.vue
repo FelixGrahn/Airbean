@@ -19,7 +19,9 @@
 
         <div class="orderinfo" v-for="(kaffe, index) of this.$root.$data.sortiment" :key="index">
           <div v-if="hideshow(index)" class="orderinfo_inner">
-          <img class="addtocartclass" v-on:click="placeorder($root.$data.sortiment[index])" src="../assets/addtocart.png" />
+          <div class="addtocartclass">
+          <img class="imgadd" v-on:click="placeorder($root.$data.sortiment[index])" src="../assets/addtocart.png" />
+          </div>
           <div class="textspecific">
             <h1 @click="merInfo(index)" class="h1-link">{{$root.$data.sortiment[index].name}}</h1><div class="dots"></div><h1>{{$root.$data.sortiment[index].price}} kr</h1>
             <p>{{$root.$data.sortiment[index].desc}}</p>
@@ -123,7 +125,8 @@ export default {
           */
        },
        merInfo(param) {
-         this.showruta = param;
+         if (param == this.showruta) {this.showruta=-1;}
+         else {this.showruta = param;}
        }
     }
 }
@@ -229,7 +232,21 @@ padding:0;
     width: 10%;
     display: flex;
     height: 10%;
-    padding: 2% 4% 0 0;
+    padding-right:4%;
+    margin:0;
+}
+.imgadd {
+    width: 80%;
+    height: 80%;
+    margin:0;
+    padding: 0;
+    cursor:pointer;
+    border:4px solid transparent;
+}
+.imgadd:hover {
+   border:4px solid red;
+   border-radius:50%;
+
 }
 .MenyHeader {
   font-weight: 700;
@@ -244,9 +261,10 @@ padding:0;
 }
 .info {
   background-color: white;
-  width: 70%;
+  width: 90%;
   border: 2px solid black;
   min-height: 90px;
   padding: 10px;
+  text-align:left;
 }
 </style>

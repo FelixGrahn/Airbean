@@ -103,9 +103,6 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    increment(state) {
-      state.count++;
-    },
     add(state, param) {
       state.orders[param].amount++;
     },
@@ -139,6 +136,10 @@ export default new Vuex.Store({
         state.orders.push({ name: param.name, price: param.price, amount: 1 });
       }
     },
+    loginfromlocal: function(state, payload) {
+      state.loggedin = true;
+      state.useractive = payload;
+    },
     login: function(state, param) {
       for (let i = 0; i < state.userlist.length; i++) {
         if (
@@ -147,8 +148,13 @@ export default new Vuex.Store({
         ) {
           state.loggedin = true;
           state.useractive = i;
+          localStorage.setItem("user", i);
         }
       }
+    },
+    logout: function(state) {
+      state.loggedin = false;
+      localStorage.removeItem("user");
     },
   },
   actions: {},

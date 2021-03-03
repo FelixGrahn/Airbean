@@ -28,11 +28,20 @@ export default {
     HamburgerMenu,
     Cart,
   },
+  created() {
+    this.checklocalstorage();
+  },
   methods: {
     increment() {
     this.$store.commit('increment')
     console.log(this.$store.state.count)
-  }
+    },
+    checklocalstorage() {
+      let getuser=localStorage.getItem("user");
+      if (getuser) {
+        this.$store.commit("loginfromlocal", getuser);
+      }
+    },
   }
 };
 </script>

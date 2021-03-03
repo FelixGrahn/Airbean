@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <Nav :hideMenu="true" :bgimage="true" />
     <div class="innerWrapper">
       <h1>Din beställning</h1>
 
@@ -41,7 +42,11 @@
 </template>
 
 <script>
+import Nav from "@/components/Nav.vue";
 export default {
+  components: {
+    Nav,
+  },
   data() {
     return {
       shortcut: this.$store.state,
@@ -73,6 +78,9 @@ export default {
 
       }this.$root.$router.push(param);
 
+    },
+    hideShowStatus() {
+        this.$store.commit('hideShowStatus')
     },
   },
 };
@@ -111,7 +119,6 @@ h3 {
   background-color: white;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 130px;
   padding: 0;
   color: rgba(0, 0, 0, 0.8);
 }
