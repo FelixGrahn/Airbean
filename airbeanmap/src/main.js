@@ -27,7 +27,7 @@ new Vue({
           desc: "Bryggd på månadens bönor",
           amount: 0,
           type: "medium",
-          info: "info coming soon"
+          info:"Bryggkaffe är en tradition som huvudsakligen växt fram i norra Europa och Nordamerika. Malningsgraden på kaffepulvret är generellt grövre än för bryggning av espresso eller moka. Det har samma funktion som för dessa på så sätt att malningsgraden påverkar bryggtiden för kaffet och behöver anpassas efter storlek på bryggaren."
         },
         {
           name: "Caffé Doppio",
@@ -35,7 +35,7 @@ new Vue({
           desc: "Bryggd på månadens bönor",
           amount: 0,
           type: "dark",
-          info: "info coming soon"
+          info: "Caffè Doppio är kaffe som bryggs på en espressomaskin. Det är dubbel mängd kaffe i både mängd råvara och färdig dryck jämfört med enkel espresso.",
         },
         {
           name: "Cappuccino",
@@ -43,7 +43,7 @@ new Vue({
           desc: "Bryggd på månadens bönor",
           amount: 0,
           type: "light",
-          info: "info coming soon"
+          info: "Cappuccino är kaffe som bryggs på en espressomaskin med skummad mjölk. Mjölken gör kaffet mjukare och sötare och serveras då med en enkel espresso som bas. ",
         },
         {
           name: "Latte Macchiato",
@@ -51,7 +51,7 @@ new Vue({
           desc: "Bryggd på månadens bönor",
           amount: 0,
           type: "dark",
-          info: "info coming soon"
+          info: "Latte macchiato är väl skummad mjölk som fläckas med kaffe som bryggs på en espressomaskin.",
         },
         {
           name: "Kaffe Latte",
@@ -59,7 +59,7 @@ new Vue({
           desc: "Bryggd på månadens bönor",
           amount: 0,
           type: "light",
-          info: "info coming soon"
+          info: "Caffè latte är kaffe som bryggs på en espressomaskin med ångvärmd mjölk. Mjölken gör kaffet mjukare och sötare.",
         },
         {
           name: "Cortado",
@@ -67,7 +67,7 @@ new Vue({
           desc: "Bryggd på månadens bönor",
           amount: 0,
           type: "dark",
-          info: "info coming soon"
+          info: "Cortado är en spansk kaffedryck som görs med måtten 50/50. Lika mycket espressokaffe som mjölk. Serveras traditionellt i ett litet glas. Ordet cortado kommer från det spanska verbet cortar, som betyder att skära. Med det menar man egentligen att man minskar syrligheten från kaffet genom att spä ut den med lite mjölk.",
         },
       ],
     };
