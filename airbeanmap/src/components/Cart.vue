@@ -63,28 +63,31 @@ export default {
       return this.$store.getters.totalcost;
     },
     checkout: function() {
-      let param = "/About"
+      let param = "/Profile";
       if (this.$store.getters.checklogin) {
-        param = "/Status"
-        this.hideShowStatus();
-        let d=new Date();
+        param = "/Status";
+        let d = new Date();
         let order_id = d.getTime();
-        let today = d.getFullYear()+"/"+((d.getMonth() + 1) > 9 ? '' : '0') + (d.getMonth() + 1)+"/"+(d.getDate() > 9 ? '' : '0') + d.getDate();
-        this.$store.commit("pushNewOrder", { ordernum: order_id, orderdate: today, ordersum: this.totalcost(), myitems: this.shortcut.orders });
+        let today =
+          d.getFullYear() +
+          "/" +
+          (d.getMonth() + 1 > 9 ? "" : "0") +
+          (d.getMonth() + 1) +
+          "/" +
+          (d.getDate() > 9 ? "" : "0") +
+          d.getDate();
+        this.$store.commit("pushNewOrder", {
+          ordernum: order_id,
+          orderdate: today,
+          ordersum: this.totalcost(),
+          myitems: this.shortcut.orders,
+        });
       }
+      this.hideShowStatus();
       this.$root.$router.push(param);
-
     },
-    /*
-    datefixer: function(param) {
-      if (param.length < 2) {
-
-      }
-      return param;
-    },
-    */
     hideShowStatus() {
-        this.$store.commit('hideShowStatus');
+      this.$store.commit("hideShowStatus");
     },
   },
 };
@@ -110,7 +113,11 @@ h3 {
   height: 110%;
   z-index: 1;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8) 80%,
+    transparent
+  );
   margin: 0;
   padding: 0;
 }

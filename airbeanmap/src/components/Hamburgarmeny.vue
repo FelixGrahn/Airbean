@@ -1,6 +1,5 @@
 <template>
     <div class="wrapper">
-        <!--{{this.$root.$data.displayNavMenu}}-->
         <div class="button" v-on:click="hideShowMenu()"><span class="plus">+</span></div>
         <ul>
             <li v-for="(menu, index) in menuOps" :key="index" class="option">
@@ -31,7 +30,7 @@ export default {
                 },
                 {
                     title: "Min profil",
-                    myUrl: "About",
+                    myUrl: "Profile",
                 },
                 {
                     title: "Orderstatus",
@@ -68,6 +67,7 @@ export default {
     width:100%;
     height:100%;
     display:block;
+    font-family: none;
 }
 .button {
     width:90px;
@@ -86,12 +86,12 @@ export default {
     flex-flow:column nowrap;
     align-content: center;
     width:700px;
-    height:110%;
-    background-color:rgba(0,0,0,0.9);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 80%,transparent);
     margin-left:auto;
     margin-right:auto;
     z-index:10;
     position:absolute;
+    height: var(--minheight);
 
 }
 

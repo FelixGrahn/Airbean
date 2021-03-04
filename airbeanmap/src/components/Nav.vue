@@ -34,13 +34,6 @@ export default {
       },
       
   },
-  // computed: {
-  //     check: function(param) {
-  //       return this.$store.state.param;
-  //     }
-  // },
-  
-
 };
 </script>
 

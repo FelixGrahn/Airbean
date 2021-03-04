@@ -1,6 +1,6 @@
 <template>
   <div class="container bottomImg">
-    <Nav :hideCart= "true" />
+    <Nav :hideCart="true" />
     <span class="header">Vårt Kaffe</span>
     <p class="bold">
       Pumpkin spice mug, barista cup, sit macchiato, kopi-luwak, doppio, grounds
@@ -32,8 +32,7 @@
       <b>Eva Cortado</b><br />
       Vd & grundare
     </span>
-<!--     <img src="../assets/footer-leaf.png" alt="löv">
- -->  </div>
+  </div>
 </template>
 
 <script>
@@ -42,39 +41,37 @@ export default {
   components: {
     Nav,
   },
-  };
+};
 </script>
 
 <style scoped>
-
-
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #f3e4e1;
-  padding-bottom: 180px;
+  min-height: var(--minheight);
+  font-family: var(--brodtext);
+  font-size: 1.2em;
 }
 .header {
- font-size: 35px;
- /*margin-right: 250px;*/
- color:black;
- font-weight:900;
- width: 32rem;
- text-align:left;
-
+  font-size: 35px;
+  color: black;
+  font-weight: 900;
+  width: 32rem;
+  text-align: left;
+  font-family: var(--hfont);
 }
 p {
-  font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: justify;
   width: 32rem;
-  line-height:165%;
-  color:black;
+  line-height: 165%;
+  color: black;
 }
 .bold {
   font-weight: 600;
 }
 b {
- font-size: 20px;
+  font-size: 20px;
 }
 </style>

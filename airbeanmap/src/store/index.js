@@ -6,11 +6,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     orders: [
-      /*
-      {name: "Bryggkaffe", price: 49, amount: 2},
-      {name: "Pulverkaffe", price: 88, amount: 4},
-      {name: "Mega-kaffe", price: 138, amount: 1},
-      */
     ],
     sortiment: [
       {
@@ -160,7 +155,6 @@ export default new Vuex.Store({
       let addCount = false;
       state.orders.forEach((item) => {
         if (param.name == item.name) {
-          //alert("Match!");
           item.amount++;
           addCount = true;
         }

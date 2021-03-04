@@ -68,21 +68,7 @@ export default {
           return show;
         },
        placeorder(param) {
-          //alert(param.name+" / "+param.price);
-          //alert(param.name);
           this.$store.commit('addnewitem', param);
-
-          /*
-          let addCount=false;
-          for (let i=0;i<this.$root.$data.orders.length;i++) {
-              if (param.name == this.$root.$data.orders[i].name) {
-                alert("Match!");
-                this.$root.$data.orders[i].amount++;
-                addCount=true;
-              }
-          }
-          if (addCount == false) {this.$root.$data.orders.push({name: param.name, price: param.price, amount: 1});}
-          */
        },
        merInfo(param) {
          if (param == this.showruta) {this.showruta=-1;}
@@ -138,7 +124,6 @@ select {
 }
 .text-holder {
   display: flex;
-  /* background-color: lightcyan; */
   height: 55%;
   width: 90%;
   align-self: center;
@@ -155,7 +140,7 @@ select {
 .orderinfo {
 display: flex;
 align-self: flex-start;
-padding: 0; /*padding: 0 0 0 9% */
+padding: 0;
 width:100%;
 }
 .orderinfo_inner {
@@ -187,10 +172,6 @@ margin:0;
 padding:0;
 }
 .textspecific > h1:nth-child(1) {
-  /*
-  min-width:200px;
-  max-width:250px;
-  */
   width:auto;
   max-width:55%;
 }

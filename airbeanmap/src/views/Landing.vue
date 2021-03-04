@@ -1,6 +1,5 @@
 <template>
   <div class="landing">
-    <!-- <h1>This is an landing page</h1> -->
     <img class="Logo2" src="../assets/logo.png" @click="ChangePage()"/>
   </div>
 </template>
@@ -8,9 +7,6 @@
 <script>
 export default {
     methods : {
-        Randomfunction: function() {
-            alert ()
-        },
         ChangePage: function() {
             this.$root.$router.push("/Meny")
         }
@@ -33,6 +29,7 @@ export default {
     padding: 0%;
     display: flex;
     justify-content: space-evenly;
+    min-height: var(--minheight);
 }
 .Logo2 {
 justify-self: center;
