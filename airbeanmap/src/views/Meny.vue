@@ -16,9 +16,9 @@
 
         </form>
 
-        <div class="minheight">
+      <div class="minheight">
 
-        <div class="orderinfo" v-for="(kaffe, index) of this.$store.state.sortiment" :key="index">
+     <div class="orderinfo" v-for="(kaffe, index) of this.$store.state.sortiment" :key="index"> 
           <div v-if="hideshow(index)" class="orderinfo_inner">
           <div class="addtocartclass">
           <img class="imgadd" v-on:click="placeorder($store.state.sortiment[index])" src="../assets/addtocart.png" />
@@ -30,7 +30,7 @@
             <p v-if="index == showruta" class="info">{{$store.state.sortiment[index].info}}</p>
           </div>
           </div>
-        </div>
+        </div> 
 
         </div>
 
@@ -112,7 +112,6 @@ select {
   font-family:var(--hfont);
   font-size:1.5em;
   background-color:rgba(255,255,255,0.5);
-  margin-left:1.2em;
 }
 
 .Breadview {
@@ -152,14 +151,12 @@ select {
   padding:0;
   width:90%;
   margin:0;
-  background-color:blue;
 }
 .orderinfo {
 display: flex;
 align-self: flex-start;
-padding: 0 0 0 9%;
+padding: 0; /*padding: 0 0 0 9% */
 width:100%;
-background-color:red;
 }
 .orderinfo_inner {
 display: flex;
