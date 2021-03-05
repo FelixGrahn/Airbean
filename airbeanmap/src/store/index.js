@@ -105,6 +105,9 @@ export default new Vuex.Store({
     displayNavStatus: false,
   },
   getters: {
+    usernumbers: (state) => {
+      return state.userlist.length;
+    },
     antaldrycker: (state) => {
       let siffra = 0;
       state.orders.forEach((item) => {
@@ -163,6 +166,9 @@ export default new Vuex.Store({
         state.orders.push({ name: param.name, price: param.price, amount: 1 });
       }
     },
+    addNewUser: function(state, payload) {
+        state.userlist.push(payload);
+    },
     pushNewOrder: function(state, payload) {
         state.userlist[state.useractive].history.unshift(payload);
         state.orders=[];
@@ -186,6 +192,17 @@ export default new Vuex.Store({
     logout: function(state) {
       state.loggedin = false;
       localStorage.removeItem("user");
+    },
+    matchuser: function(state, param) {
+      let userok=true;
+      for (let i=0;i<state.userlist.length;i++) {
+        if (param.user == state.userlist[i].email) {
+          userok=false;
+        }
+      }
+      if (userok == true) {
+        state.userlist.push({ username: param.username, email: param.user, password: param.pass, history: [{ordernum: "", orderdate: "", ordersum: 0, myitems: [],}], });
+      }
     },
   },
   actions: {},

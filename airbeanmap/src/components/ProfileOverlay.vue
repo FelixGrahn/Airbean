@@ -5,7 +5,7 @@
       <img src="@/assets/Group6.png" class="img" alt="image" />
       <h2>Välkommen till AirBean-familjen!</h2>
       <h3>
-        Genom att skapa ett konto nedan kan du spara och se din orderhistorik.
+        {{textobj[this.mode].welcometxt}}
       </h3>
 
       <div class="errorfield" v-if="errorlog.length > 0">
@@ -14,26 +14,32 @@
         </ul>
       </div>
 
-      <form @submit.prevent @submit="login(email, password)">
-        <label for="myname">Email</label>
-        <input v-model="email" type="text" placeholder="Email" id="myname" />
-        <label for="myemail">Password</label>
+      <form @submit.prevent @submit="login(email, password, myname)">
+        <label for="myname" v-if="this.mode == 1">Name</label>
+        <input v-model="myname" type="text" placeholder="Name" id="myname" v-if="this.mode == 1" />
+        <label for="myemail">Email</label>
+        <input v-model="email" type="email" placeholder="Email" id="myemail" />
+        <label for="mypass">Password</label>
         <input
           v-model="password"
           type="password"
           placeholder="Password"
-          id="myemail"
+          id="mypass"
           maxlength="20"
         />
 
+        <div class="signup" @click="switchmode()">{{textobj[this.mode].linktxt}}</div>
+
+        <div class="gdprfield">
         <input
           type="checkbox"
           id="gdpr"
           class="checkbox"
           v-model="checked"
         /><label for="gdpr" class="gdpr">GDPR OK</label>
+        </div>
 
-        <input type="submit" value="Brew me a cup!" class="button" />
+        <input type="submit" :value="textobj[this.mode].buttontxt" class="button" />
       </form>
     </div>
   </div>
@@ -47,15 +53,33 @@ export default {
     return {
       email: "",
       password: "",
+      myname: "",
       errorlog: [],
       checked: false,
+      mode: "0",
+      textobj: [
+        {
+          welcometxt: "Genom att logga in kan du se din orderhistorik.",
+          buttontxt: "Brew me a cup!",
+          linktxt: "Not registered? Sign up here!",
+        },
+        {
+          welcometxt: "Genom att skapa ett konto nedan kan du spara och se din orderhistorik.",
+          buttontxt: "Sign me up!",
+          linktxt: "I want to login instead!",
+        }
+      ]
     };
   },
   components: {
     Nav,
   },
   methods: {
-    login: function(un, pw) {
+    switchmode: function() {
+      this.mode++;
+      if (this.mode > 1) {this.mode=0;}
+    },
+    login: function(un, pw, name) {
       this.errorlog = [];
       let emailok = this.validEmail(un);
 
@@ -68,14 +92,31 @@ export default {
       if (!emailok) {
         this.errorlog.push("Email must be valid.");
       }
+      if (name.length < 1 && this.mode == 1) {
+            this.errorlog.push("Name must be at least 1 character.");
+      }
 
       if (this.errorlog.length <= 0) {
-        this.$store.commit("login", { user: un, pass: pw });
-        if (!this.$store.getters.checklogin) {
-          this.errorlog.push("Wrong email and/or password.");
-        } else {
-          this.$store.commit('hideShowStatus')
-          this.$root.$router.push("Meny");
+        if (this.mode == 0) {
+            this.$store.commit("login", { user: un, pass: pw });
+            if (!this.$store.getters.checklogin) {
+              this.errorlog.push("Wrong email and/or password.");
+            } else {
+              this.$store.commit('hideShowStatus');
+              this.$root.$router.push("Meny");
+            }
+        }
+        else {
+          let usernumbers=this.$store.getters.usernumbers;
+          this.$store.commit("matchuser", { user: un, pass: pw, username: name});
+          let usernumbers_new=this.$store.getters.usernumbers;
+            if (usernumbers == usernumbers_new) {
+              this.errorlog.push("User already exists");
+            }
+            else {
+              this.errorlog.push("User successfully created!");
+              this.mode=0;
+            }
         }
       }
     },
@@ -88,6 +129,19 @@ export default {
 </script>
 
 <style scoped>
+
+.signup {
+  width:40%;
+  margin-left:50%;
+  font-weight:700;
+  text-align:right;
+}
+.signup:hover {
+  text-decoration:underline;
+  cursor:pointer;
+  color:blue;
+}
+
 .errorfield {
   border: 2px solid black;
   background-color: rgba(255, 255, 255, 0.2);
@@ -134,7 +188,7 @@ h3 {
 
 .innerWrapper {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   align-items: center;
   align-content: center;
   width: 90%;
@@ -151,31 +205,38 @@ form {
 }
 
 input {
-  width: 100%;
-  height: 72px;
-  padding: 0.3em;
-  font-size: 1.5em;
+  width: 80%;
+  height: 50px;
+  padding: 0.2em;
+  font-size: 1.2em;
   border: 1px solid black;
-  margin: 0 0 40px 0;
+  margin: 0 0 20px 0;
   box-sizing: border-box;
   border-radius: 6px;
   background-color: transparent;
 }
 label {
   width: 100%;
+  padding-left:10%;
   display: block;
   text-align: left;
   font-size: 1em;
-  font-size: 1.1em;
+}
+.gdprfield {
+  display:inline-block;
+  width:80%;
+  padding:0;
+  margin:0;
 }
 .gdpr {
-  width: 92%;
+  width: 90%;
   display: inline-block;
+  padding-left:0;
 }
 input[type="checkbox"] {
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   background-color: white;
   vertical-align: middle;
   border: 1px solid #ddd;
@@ -191,10 +252,11 @@ input[type="submit"] {
   background-color: #2f2926;
   border-radius: 50px;
   outline: 0;
-  margin-top: 70px;
+  height:2.5em;
+  margin-top: 40px;
   width: 70%;
-  font-size: 3em;
-  line-height: 50%;
+  font-size: 2em;
+  line-height: 40%;
 }
 
 .img {

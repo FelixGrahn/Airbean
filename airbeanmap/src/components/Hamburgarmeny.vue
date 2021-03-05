@@ -54,6 +54,7 @@ export default {
         },
         localKill() {
             this.$store.commit('logout');
+            this.hideShowMenu();
         }
     }
     
