@@ -24,7 +24,7 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
-
+### ARBETSMETOD
 
 Under projektets gång har vi använt oss av den agila metoden.
 
